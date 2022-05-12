@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1652382175 source:/home/rus/src/code_blocks_proj/coptus/main.cpp
+	<SFML/Audio.hpp>
+	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
+	<string>
+	<iostream>
+	<vector>
+
