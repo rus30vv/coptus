@@ -4,8 +4,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
-
-
+#include <iterator>
 using namespace sf;
 using namespace std;
 
@@ -47,7 +46,7 @@ class Actor
 	}
 
 	void update(float time){
-		if (Keyboard::isKeyPressed(Keyboard::W)) { herosprite.setPosition(positionx = positionx + 0.3f, positiony = positionx + time);}
+		//if (Keyboard::isKeyPressed(Keyboard::W)) { herosprite.setPosition(positionx = positionx + 0.3f, positiony = positionx + time);}
 /*		if (Keyboard::isKeyPressed(Keyboard::A)) { herosprite.setPosition(positionx = positionx + time, positiony = positionx + time);}
 		if (Keyboard::isKeyPressed(Keyboard::D)) { herosprite.setPosition(positionx = positionx + time, positiony = positionx + time);}
 	    if (Keyboard::isKeyPressed(Keyboard::S)) { herosprite.setPosition(positionx = positionx + time, positiony = positionx + time);}
@@ -66,8 +65,23 @@ int main()
 
 	//time
 	Clock clock;
-    Actor bm1(100, 100);
+    //vector array
+    int max_enemy_rom = 10;
 
+    vector <Actor*> enemy(10);
+    float py,px;
+    py = 100.f;
+    px = 10.f;
+    vector<Actor>::iterator *it;//add object
+    vector<int>::iterator *it2;//get in loop
+
+    for (auto it = enemy.begin(); it<=enemy.end(); it++)
+    {
+            cout<<"create_obj"<<endl;
+            enemy.push_back(new Actor(10.f, 100.f));
+    }
+
+    //vector array end
  	window.setVerticalSyncEnabled(true);
 
 	//end testing
@@ -90,11 +104,16 @@ int main()
         // Clear screen
 		//
         window.clear();
-        bm1.update(time);
-		window.draw(bm1.herosprite);
+
 		//for draw
 
-		//
+        for (auto it2 = enemy.begin(); it2<=enemy.end(); *it2++)
+        {
+            cout<<"id_ ";cout<< *it2 <<endl;
+
+            window.draw((*it2)->herosprite);
+        }
+
         window.display();
         window.setFramerateLimit(30);
     }
